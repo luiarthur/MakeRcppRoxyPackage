@@ -2,11 +2,12 @@
 
 ```R
 ### Install the following libraries if needed
-install.packages("roxygen2")
-install.packages("devtools")
-install.packages("Rcpp")
-#Rcpp::Rcpp.package.skeleton("mypackage")
-devtools::create("SomePackage")
+#install.packages("roxygen2")
+#install.packages("devtools")
+#install.packages("Rcpp")
+#devtools::create("SomePackage") # an old alternative
+
+Rcpp::Rcpp.package.skeleton("SomePackage")
 
 ### Check session info
 library(Rcpp)
@@ -22,8 +23,8 @@ Don't touch the following files and directories:
 ## Do the Following
 
 ```bash
-rm SomePackage.Rproj
-mkdir src
+#rm SomePackage.Rproj
+#mkdir src
 ```
 
 ## Edit Description File
@@ -41,7 +42,7 @@ LinkingTo: Rcpp
 
 Create `gen.R` with the following contents:
 
-```
+```R
 #!/usr/bin/Rscript
 
 # Generate the docs
@@ -62,6 +63,7 @@ An example cpp file in `src` is
 ```cpp
 #include <Rcpp.h>
 #include "addOne.h"
+
 using namespace Rcpp;
 
 //' SomethingCool
@@ -70,6 +72,7 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 double something(double a) {
   // something(a) returns a + a + 1 = 2a + 1.
+  Rcout << "Input: " << a << std::endl;
   return a + addOne(a);
 }
 ```
@@ -97,6 +100,7 @@ what functions to export to R.
 Go back one directory, so the package dir is in your current dir.
 
 ```bash
+R CMD REMOVE SomePackage
 R CMD build SomePackage
 R CMD INSTALL SomePackage*.tar.gz
 ```
