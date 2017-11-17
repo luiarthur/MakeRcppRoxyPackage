@@ -1,1 +1,7 @@
-*.tag.gz
+### Ignore All Files
+*
+
+### Except
+!.gitignore
+!README.md
+
