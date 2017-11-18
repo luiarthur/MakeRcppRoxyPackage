@@ -4,4 +4,4 @@
 ### Except
 !.gitignore
 !README.md
-
+!localInstall

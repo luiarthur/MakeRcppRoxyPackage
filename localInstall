@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PKG_NAME="SomePackage"
+
+### Generate the docs ###
+R -e "roxygen2::roxygenise('$PKG_NAME');Rcpp::compileAttributes('$PKG_NAME');"
+
+##### Install Package Locally ###
+R CMD build $PKG_NAME
+R CMD INSTALL $PKG_NAME*.tar.gz
