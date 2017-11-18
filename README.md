@@ -5,9 +5,11 @@
 #install.packages("roxygen2")
 #install.packages("devtools")
 #install.packages("Rcpp")
+#install.packages("RcppArmadillo")
 #devtools::create("SomePackage") # an old alternative
 
-Rcpp::Rcpp.package.skeleton("SomePackage")
+#Rcpp::Rcpp.package.skeleton("SomePackage")
+RcppArmadillo::RcppArmadillo.package.skeleton("SomePackage")
 
 ### Check session info
 library(Rcpp)
